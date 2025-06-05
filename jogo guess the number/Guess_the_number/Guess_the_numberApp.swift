@@ -9,9 +9,15 @@ import SwiftUI
 
 @main
 struct Guess_the_numberApp: App {
+    @StateObject var appState = AppState()
+    @StateObject var jogadoresData = JogadoresData() // 🔥 Move this here
+
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .id(appState.restartID) // forces view reload
+                .environmentObject(appState)
+                .environmentObject(jogadoresData) // 💡 inject jogadoresData globally
         }
     }
 }
