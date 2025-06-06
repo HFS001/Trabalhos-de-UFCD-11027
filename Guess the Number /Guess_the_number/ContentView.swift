@@ -1,19 +1,21 @@
 import SwiftUI
 import Foundation
 
-struct Jogador: Identifiable {
-    let id = UUID()
-    let nome: String
-    let tentativas: Int
-}
+
 
 class JogadoresData: ObservableObject {
     @Published var jogadores: [Jogador] = []
 
     func adicionarJogador(nome: String, tentativas: Int) {
-        let novoJogador = Jogador(nome: nome, tentativas: tentativas)
-        jogadores.append(novoJogador)
+        if let index = jogadores.firstIndex(where: { $0.nome == nome }) {
+            jogadores[index].vitorias += 1
+            jogadores[index].tentativas += tentativas
+        } else {
+            let novoJogador = Jogador(nome: nome, tentativas: tentativas)
+            jogadores.append(novoJogador)
+        }
     }
+
 }
 
 struct ContentView: View {
@@ -26,6 +28,9 @@ struct ContentView: View {
         }
     }
 }
+
+
+
 
 #Preview {
     ContentView()
