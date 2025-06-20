@@ -1,9 +1,3 @@
-//
-//  Jogador.swift
-//  Guess_the_number
-//
-//  Created by Haider Fahim on 06/06/2025.
-//
 import SwiftUI
 import Foundation
 

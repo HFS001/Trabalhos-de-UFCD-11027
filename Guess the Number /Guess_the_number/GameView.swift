@@ -72,8 +72,8 @@ struct GameView: View {
                 .foregroundColor(.white)
                 .cornerRadius(10)
 
-                Button("Nova Jogador") { // 🔄 Was: Exit
-                    appState.restartID = UUID() // 💥 This resets back to WelcomeView
+                Button("Nova Jogador") {
+                    appState.restartID = UUID() 
                 }
                 .padding()
                 .background(Color.red)

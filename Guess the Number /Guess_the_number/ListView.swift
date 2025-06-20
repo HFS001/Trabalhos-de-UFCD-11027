@@ -4,11 +4,15 @@ struct ListView: View {
     @ObservedObject var jogadoresData: JogadoresData
     @State private var isGrid = false
 
-    var topJogadores: [Jogador] {
+    init(jogadoresData: JogadoresData) {
+        self.jogadoresData = jogadoresData
+    }
+
+    private var topJogadores: [Jogador] {
         Array(jogadoresData.jogadores.sorted(by: { $0.tentativas < $1.tentativas }).prefix(10))
     }
 
-    var columns: [GridItem] = [
+    private var columns: [GridItem] = [
         GridItem(.flexible()),
         GridItem(.flexible())
     ]
